@@ -1,0 +1,37 @@
+<div class="main-content">
+    <div class="container-fluid">
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-4">
+                    <div class="card card-chart">
+                        <div class="card-header card-header-info text-center">
+                            <img  alt="image" class="rounded-circle m-t-xs img-fluid" src="{{pokemon?.photo}}">
+                            <p class="card-title">{{pokemon?.name}}</p>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-title">Descripcion muy larga de bulbasaru flor y no se que cosa</p>
+                            <p class="card-title"><strong>Type:</strong>{{pokemon?.type}}</p>
+                            <p class="card-title"><strong>Weight:</strong>{{pokemon?.weight}}</p>
+                            <strong>Abilities:</strong>
+                                <ul *ngFor="let a of pokemon?.abilities">
+                                    <li>{{a.ability.name}}</li>
+                                    
+                                </ul>
+                            <strong>Evolution:</strong>
+                                <ol *ngFor="let c chainAux" >
+                                    <li>{{c}}</li>
+                                </ol>
+                        
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+                               
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

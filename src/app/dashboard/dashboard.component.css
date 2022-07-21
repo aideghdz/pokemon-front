@@ -1,3 +1,8 @@
 .pokeinfo a {
     color: black;
 }
+
+.visually-hidden {
+    display:none !important;
+    visibility: hidden !important;
+  }

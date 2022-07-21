@@ -7,9 +7,16 @@ import { AppRoutingModule } from './app.routing';
 import { ComponentsModule } from './components/components.module';
 import { AppComponent } from './app.component';
 import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.component';
+import { ApiService } from './_service/api-service/api-service.service';
+import {PokemonService} from './_service/pokemon/PokemonService';
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap' ;
+
+
 
 @NgModule({
   imports: [
+    NgbModule,
+    NgbPaginationModule,
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -17,13 +24,17 @@ import { AdminLayoutComponent } from './layouts/admin-layout/admin-layout.compon
     ComponentsModule,
     RouterModule,
     AppRoutingModule,
+   
   ],
   declarations: [
     AppComponent,
     AdminLayoutComponent,
 
   ],
-  providers: [],
+  providers: [
+    ApiService,
+    PokemonService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,29 +1,29 @@
 <div class="main-content">
   <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-4">
-            <div class="card card-chart pokeinfo">
-                <div class="card-header text-center ">
-                    <h3><strong>Bulbasaur</strong></h3>
-                </div>
+    <div>
+        <ng-container *ngFor="let p of pokemons; let i = index">
+            <div class="row " *ngIf="(i%3)==0"> 
+                <div class="col-md-4 flex-column"  *ngFor="let p1 of pokemons.slice(i, i+3)">
+                    <div class="card card-chart pokeinfo">
+                        <div class="card-header text-center ">
+                            <h3><strong>{{p1.name}}</strong></h3>
+                        </div>
                 <div class="card-body">
-                    <a class="row" href="profile.html">
+                    <a class="row" [routerLink]="['/detail', p1.name]">
                         <div class="col-4">
                             <div class="text-center">
-                                <img alt="image" class="rounded-circle m-t-xs img-fluid" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/1.png
-        ">
-                                <div class="m-t-xs font-bold"><strong>Type:</strong>Grass</div>
+                                <img alt="image" class="rounded-circle m-t-xs img-fluid" src="{{p1.photo}}">
+                                <div class="m-t-xs font-bold"><strong>Type:</strong>{{p1.type}}</div>
                             </div>
                         </div>
                         <div class="col-8">
                             <p>
-                                <strong>Weigh:</strong>69
+                                <strong>Weight:</strong>{{p1.weight}}
                             </p>
                             <strong>Abilities</strong>
-                            <ul>
-                                <li>overgrow</li>
-                                <li>chlorophyll</li>
-                                <li>overgrow</li>
+                            <ul *ngFor="let a of p1.abilities">
+                                <li>{{a.ability.name}}</li>
+                                
                             </ul>
                         </div>
                     </a>
@@ -32,26 +32,21 @@
                     
                 </div>
             </div>
-        </div>
-         
-        
-        
-      </div>
+                 </div>
+               </div>    
+        </ng-container>
+    </div>
      
-      
+    
   </div>
+  
   <div class="container-fluid">
       <div class="row justify-content-center">
           <div class="col-md-4">
-            <nav aria-label="Page navigation example">
-                <ul class="pagination ">
-                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link " href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-            </nav>
+            <ngb-pagination [collectionSize]="pokemonList?.count" [(page)]="page"  [pageSize]="limit"  [rotate]="false" 
+            [maxSize]="5" (pageChange)="loadPage($event)"></ngb-pagination>
+
+
           </div>
       </div>
    
